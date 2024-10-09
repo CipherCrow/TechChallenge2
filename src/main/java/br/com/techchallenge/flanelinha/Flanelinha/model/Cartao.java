@@ -18,7 +18,7 @@ public class Cartao {
     private TipoBandeirasCartaoEnum bandeira;
     private LocalDateTime dataCadastro;
     private LocalDateTime dataVencimento;
-    private String codigoDeSegurança;
+    private String codigoDeSeguranca;
 
     @DBRef
     private Usuario titular;
