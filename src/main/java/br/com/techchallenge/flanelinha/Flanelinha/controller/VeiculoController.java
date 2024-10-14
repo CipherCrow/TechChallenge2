@@ -1,7 +1,9 @@
 package br.com.techchallenge.flanelinha.Flanelinha.controller;
 
 import br.com.techchallenge.flanelinha.Flanelinha.model.Usuario;
+import br.com.techchallenge.flanelinha.Flanelinha.model.Veiculo;
 import br.com.techchallenge.flanelinha.Flanelinha.services.UsuarioService;
+import br.com.techchallenge.flanelinha.Flanelinha.services.VeiculoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,73 +11,72 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/usuario")
-public class UsuarioController {
+@RequestMapping(value = "/veiculo")
+public class VeiculoController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private VeiculoService veiculoService;
 
     @GetMapping("/buscarTodos")
-    public ResponseEntity<Object> buscarTodosUsuarios() {
+    public ResponseEntity<Object> buscarTodosVeiculos() {
         try {
-            List<Usuario> usuarios = usuarioService.buscarTodosUsuarios();
-            if (usuarios.isEmpty()) {
+            List<Veiculo> veiculos = veiculoService.buscarTodosVeiculos();
+            if (veiculos.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
-            return ResponseEntity.ok(usuarios);
+            return ResponseEntity.ok(veiculos);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Não foi possível buscar todos os usuários: " + e.getMessage());
+                    .body("Não foi possível buscar todos os veiculos: " + e.getMessage());
         }
     }
 
     @PostMapping("/criar")
-    public ResponseEntity<Object> criarUsuario(@Valid @RequestBody Usuario usuarioBody) {
+    public ResponseEntity<Object> criarVeiculo(@Valid @RequestBody Veiculo veiculoBody) {
         try {
-            Usuario usuario = usuarioService.criarUsuario(usuarioBody);
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+            Veiculo veiculo = veiculoService.criarVeiculo(veiculoBody);
+            return ResponseEntity.status(HttpStatus.CREATED).body(veiculo);
         //} catch (MethodArgumentNotValidException ex) {
         //    return ResponseEntity.badRequest().body("Validações necessárias: " + ex.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro ao criar usuário: " + e.getMessage());
+                    .body("Erro ao criar veiculo: " + e.getMessage());
         }
     }
 
     @GetMapping("/buscar/{codigo}")
-    public ResponseEntity<Object> buscarUsuario(@PathVariable  String codigo) {
+    public ResponseEntity<Object> buscarVeiculo(@PathVariable  String codigo) {
         try {
-            Usuario usuario = usuarioService.buscarUsuario(codigo);
-            return ResponseEntity.ok(usuario);
+            Veiculo veiculo = veiculoService.buscarVeiculo(codigo);
+            return ResponseEntity.ok(veiculo);
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body("Validação: " + ex.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro ao buscar usuário: " + e.getMessage());
+                    .body("Erro ao buscar veiculo: " + e.getMessage());
         }
     }
 
     @PutMapping("/atualizar")
-    public ResponseEntity<Object> atualizarUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<Object> atualizarVeiculo(@RequestBody Veiculo veiculo) {
         try {
-            usuarioService.atualizarUsuario(usuario);
-            return ResponseEntity.ok("Usuário atualizado com sucesso");
+            veiculoService.atualizarVeiculo(veiculo);
+            return ResponseEntity.ok("Veiculo atualizado com sucesso");
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body("Erro: " + ex.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro ao atualizar usuário: " + e.getMessage());
+                    .body("Erro ao atualizar veiculo: " + e.getMessage());
         }
     }
 
     @DeleteMapping("/deletar/{codigo}")
-    public ResponseEntity<Object> deletarUsuario(@PathVariable String codigo) {
+    public ResponseEntity<Object> deletarVeiculo(@PathVariable String codigo) {
         try {
-            usuarioService.deletarUsuario(codigo);
-            return ResponseEntity.ok("Usuário deletado com sucesso");
+            veiculoService.deletarVeiculo(codigo);
+            return ResponseEntity.ok("Veiculo deletado com sucesso");
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body("Erro: " + ex.getMessage());
         } catch (Exception e) {
