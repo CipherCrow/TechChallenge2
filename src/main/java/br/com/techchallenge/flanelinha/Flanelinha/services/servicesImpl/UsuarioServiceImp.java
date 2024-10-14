@@ -59,6 +59,5 @@ public class UsuarioServiceImp implements UsuarioService {
         Objects.requireNonNull(idUsuario, "O código do usuário não deve estar nulo!");
         Query query = new Query(Criteria.where("codigo").is(idUsuario));
         this.mongoTemplate.remove(query, Usuario.class);
-        usuarioRepository.deleteById(idUsuario);
     }
 }
