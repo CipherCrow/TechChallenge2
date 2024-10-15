@@ -1,6 +1,7 @@
 package br.com.techchallenge.flanelinha.Flanelinha.model;
 
 import br.com.techchallenge.flanelinha.Flanelinha.model.enums.TipoPagamentoEnum;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -13,8 +14,7 @@ public class Pagamento {
     private String id;
 
     private TipoPagamentoEnum formaPagamento;
+    @NotBlank(message = "Deve existir um valor total para o pagamento!")
     private Double valorTotal;
 
-    @DBRef
-    private Cartao cartao;
 }

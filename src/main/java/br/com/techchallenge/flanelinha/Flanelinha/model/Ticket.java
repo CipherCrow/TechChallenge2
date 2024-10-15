@@ -18,11 +18,9 @@ public class Ticket {
     private LocalDateTime momentoExpiracao;
 
     @DBRef
-    @NotNull(message = "Deve existir dados de pagamento!")
     private Pagamento pagamento;
 
     @DBRef
-    @NotNull(message = "Deve existir um usuário relacionado!")
     private Usuario usuario;
 
     @DBRef

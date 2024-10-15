@@ -21,7 +21,7 @@ public class TicketController {
     @GetMapping("/ticket/buscarTodos")
     public ResponseEntity<Object> buscarTodosTikets() {
         try {
-            List<Ticket> ticket = ticketService.buscarTodosTikets();
+            List<Ticket> ticket = ticketService.buscarTodosTickets();
             if (ticket.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
@@ -83,6 +83,5 @@ public class TicketController {
                     .body("Erro ao deletar ticket: " + e.getMessage());
         }
     }
-
 
 }
