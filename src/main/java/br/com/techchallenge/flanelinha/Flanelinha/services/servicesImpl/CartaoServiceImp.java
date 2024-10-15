@@ -55,7 +55,7 @@ public class CartaoServiceImp implements CartaoService {
     @Override
     public void deletarCartao(String idCartao) {
         Objects.requireNonNull(idCartao, "O código do Cartão não deve estar nulo!");
-        Query query = new Query(Criteria.where("codigo").is(idCartao));
+        Query query = new Query(Criteria.where("id").is(idCartao));
         this.mongoTemplate.remove(query, Cartao.class);
     }
 }

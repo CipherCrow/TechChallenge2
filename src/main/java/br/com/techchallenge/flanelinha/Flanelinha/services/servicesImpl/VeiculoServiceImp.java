@@ -56,7 +56,7 @@ public class VeiculoServiceImp implements VeiculoService {
     @Override
     public void deletarVeiculo(String idVeiculo) {
         Objects.requireNonNull(idVeiculo, "O código do veiculo não deve estar nulo!");
-        Query query = new Query(Criteria.where("codigo").is(idVeiculo));
+        Query query = new Query(Criteria.where("id").is(idVeiculo));
         this.mongoTemplate.remove(query, Veiculo.class);
     }
 }
