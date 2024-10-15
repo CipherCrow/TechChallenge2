@@ -1,5 +1,6 @@
 package br.com.techchallenge.flanelinha.Flanelinha.model;
 
+import br.com.techchallenge.flanelinha.Flanelinha.model.enums.StatusTicketEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -16,6 +17,7 @@ public class Ticket {
     private LocalDateTime horaCriacao;
     private LocalDateTime tempoSolicitado;
     private LocalDateTime momentoExpiracao;
+    private StatusTicketEnum status;
 
     @DBRef
     private Pagamento pagamento;
