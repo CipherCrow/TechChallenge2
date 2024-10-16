@@ -18,7 +18,7 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-    @GetMapping("/ticket/buscarTodos")
+    @GetMapping("/buscarTodos")
     public ResponseEntity<Object> buscarTodosTikets() {
         try {
             List<Ticket> ticket = ticketService.buscarTodosTickets();
@@ -32,7 +32,7 @@ public class TicketController {
         }
     }
 
-    @PostMapping("/ticket/criar")
+    @PostMapping("/criar")
     public ResponseEntity<Object> criarTicket(@Valid @RequestBody Ticket ticketBody) {
         try {
             Ticket ticket = ticketService.criarTicket(ticketBody);
@@ -45,7 +45,7 @@ public class TicketController {
         }
     }
 
-    @GetMapping("/ticket/buscar/{codigo}")
+    @GetMapping("/buscar/{codigo}")
     public ResponseEntity<Object> buscarTicket(@PathVariable  String codigo) {
         try {
             Ticket ticket = ticketService.buscarTicket(codigo);
@@ -58,7 +58,7 @@ public class TicketController {
         }
     }
 
-    @PutMapping("/ticket/atualizar")
+    @PutMapping("/atualizar")
     public ResponseEntity<Object> atualizarTicket(@RequestBody Ticket ticket) {
         try {
             ticketService.atualizarTicket(ticket);
@@ -71,7 +71,7 @@ public class TicketController {
         }
     }
 
-    @DeleteMapping("/ticket/deletar/{codigo}")
+    @DeleteMapping("/deletar/{codigo}")
     public ResponseEntity<Object> deletarTicket(@PathVariable String codigo) {
         try {
             ticketService.deletarTicket(codigo);

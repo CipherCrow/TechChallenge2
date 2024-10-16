@@ -56,7 +56,7 @@ public class LocalEstacionavelServiceImp implements LocalEstacionavelService {
     @Override
     public void deletarLocal(String idLocal) {
         Objects.requireNonNull(idLocal, "O código do Cartão não deve estar nulo!");
-        Query query = new Query(Criteria.where("codigo").is(idLocal));
+        Query query = new Query(Criteria.where("id").is(idLocal));
         this.mongoTemplate.remove(query, LocalEstacionavel.class);
     }
 }
