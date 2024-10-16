@@ -16,7 +16,7 @@ public class Usuario {
     @Id
     private String id;
 
-    @NotBlank(message = "O nome não deve estar em branco!")
+    @NotNull(message = "O nome não deve estar em branco!")
     private String nome;
     @NotNull(message = "Apenas cadastros com CPF são suportados!")
     private String cpf;

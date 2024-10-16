@@ -17,7 +17,7 @@ public class PagamentoController {
     @Autowired
     private PagamentoService pagamentoService;
 
-    @GetMapping("/pagamento/buscarTodos")
+    @GetMapping("/buscarTodos")
     public ResponseEntity<Object> buscarTodosPagamentos() {
         try {
             List<Pagamento> pagamento = pagamentoService.buscarTodosPagamentos();
@@ -31,7 +31,7 @@ public class PagamentoController {
         }
     }
 
-    @PostMapping("/pagamento/criar")
+    @PostMapping("/criar")
     public ResponseEntity<Object> criarLocal(@Valid @RequestBody Pagamento pagamentoBody) {
         try {
             Pagamento pagamento = pagamentoService.criarPagamento(pagamentoBody);
@@ -44,7 +44,7 @@ public class PagamentoController {
         }
     }
 
-    @GetMapping("/pagamento/buscar/{codigo}")
+    @GetMapping("/buscar/{codigo}")
     public ResponseEntity<Object> buscarPagamento(@PathVariable  String codigo) {
         try {
             Pagamento pagamento = pagamentoService.buscarPagamento(codigo);
@@ -57,7 +57,7 @@ public class PagamentoController {
         }
     }
 
-    @PutMapping("/pagamento/atualizar")
+    @PutMapping("/atualizar")
     public ResponseEntity<Object> atualizarPagamento(@RequestBody Pagamento pagamento) {
         try {
             pagamentoService.atualizarPagamento(pagamento);
@@ -70,7 +70,7 @@ public class PagamentoController {
         }
     }
 
-    @DeleteMapping("/pagamento/deletar/{codigo}")
+    @DeleteMapping("/deletar/{codigo}")
     public ResponseEntity<Object> deletarPagamento(@PathVariable String codigo) {
         try {
             pagamentoService.deletarPagamento(codigo);

@@ -1,6 +1,7 @@
 package br.com.techchallenge.flanelinha.Flanelinha.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -12,7 +13,7 @@ public class Veiculo {
     @Id
     private String id;
 
-    @NotBlank(message = "A placa não deve estar em branco!")
+    @NotNull(message = "A placa não deve estar em branco!")
     private String placa;
     private String modelo;
     private String cor;

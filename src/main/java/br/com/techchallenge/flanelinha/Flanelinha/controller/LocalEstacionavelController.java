@@ -18,7 +18,7 @@ public class LocalEstacionavelController {
     @Autowired
     private LocalEstacionavelService localEstacionavelService;
 
-    @GetMapping("/local/buscarTodos")
+    @GetMapping("/buscarTodos")
     public ResponseEntity<Object> buscarTodosLocais() {
         try {
             List<LocalEstacionavel> local = localEstacionavelService.buscarTodosLocais();
@@ -32,7 +32,7 @@ public class LocalEstacionavelController {
         }
     }
 
-    @PostMapping("/local/criar")
+    @PostMapping("/criar")
     public ResponseEntity<Object> criarLocal(@Valid @RequestBody LocalEstacionavel localBody) {
         try {
             LocalEstacionavel local = localEstacionavelService.criarLocal(localBody);
@@ -45,7 +45,7 @@ public class LocalEstacionavelController {
         }
     }
 
-    @GetMapping("/local/buscar/{codigo}")
+    @GetMapping("/buscar/{codigo}")
     public ResponseEntity<Object> buscarLocal(@PathVariable  String codigo) {
         try {
             LocalEstacionavel local = localEstacionavelService.buscarLocal(codigo);
@@ -58,7 +58,7 @@ public class LocalEstacionavelController {
         }
     }
 
-    @PutMapping("/local/atualizar")
+    @PutMapping("/atualizar")
     public ResponseEntity<Object> atualizarLocal(@RequestBody LocalEstacionavel local) {
         try {
             localEstacionavelService.atualizarLocal(local);
@@ -71,7 +71,7 @@ public class LocalEstacionavelController {
         }
     }
 
-    @DeleteMapping("/local/deletar/{codigo}")
+    @DeleteMapping("/deletar/{codigo}")
     public ResponseEntity<Object> deletarLocal(@PathVariable String codigo) {
         try {
             localEstacionavelService.deletarLocal(codigo);
